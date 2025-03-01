@@ -1,0 +1,79 @@
+class Vehicle {
+    protected String VNo;
+    protected int no_of_wheel;
+    protected int max_speed;
+
+    void readVehicleData(String vNo, int wheels, int speed) {
+        VNo = vNo;
+        no_of_wheel = wheels;
+        max_speed = speed;
+    }
+
+    void displayVehicleData() {
+        System.out.println("Vehicle No: " + VNo);
+        System.out.println("Wheels: " + no_of_wheel);
+        System.out.println("Max Speed: " + max_speed);
+    }
+}
+
+class Passenger extends Vehicle {
+    protected int no_of_passengers;
+
+    void readPassengerData(int passengers) {
+        no_of_passengers = passengers;
+    }
+
+    void displayPassengerData() {
+        displayVehicleData();
+        System.out.println("Passengers: " + no_of_passengers);
+    }
+}
+
+class Bus extends Passenger {
+    private String route, helper_name;
+    private double fare_per_person;
+
+    void readBusData(String route, double fare, String helper) {
+        this.route = route;
+        this.fare_per_person = fare;
+        this.helper_name = helper;
+    }
+
+    void displayBusData() {
+        displayPassengerData();
+        System.out.println("Route: " + route);
+        System.out.println("Fare per person: $" + fare_per_person);
+        System.out.println("Helper Name: " + helper_name);
+    }
+}
+
+class Taxi extends Passenger {
+    private double fare_per_km;
+
+    void readTaxiData(double fare) {
+        this.fare_per_km = fare;
+    }
+
+    void displayTaxiData() {
+        displayPassengerData();
+        System.out.println("Fare per KM: $" + fare_per_km);
+    }
+}
+
+public class MultilevelVehicle {
+    public static void main(String[] args) {
+        Bus bus = new Bus();
+        bus.readVehicleData("KA-01-AB-1234", 6, 80);
+        bus.readPassengerData(40);
+        bus.readBusData("City Center", 2.5, "John Doe");
+        System.out.println("\nBus Details:");
+        bus.displayBusData();
+
+        Taxi taxi = new Taxi();
+        taxi.readVehicleData("KA-02-CD-5678", 4, 100);
+        taxi.readPassengerData(4);
+        taxi.readTaxiData(1.5);
+        System.out.println("\nTaxi Details:");
+        taxi.displayTaxiData();
+    }
+}
