@@ -1,0 +1,15 @@
+class MyClass {
+    int data;
+
+    void display() {
+        System.out.println("Data: " + data);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.data = 10;
+        obj.display();
+    }
+}
