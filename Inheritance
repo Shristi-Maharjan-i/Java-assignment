@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+class Polygon {
+    protected double dimension1, dimension2;
+
+    void ReadDimension() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first dimension: ");
+        dimension1 = sc.nextDouble();
+        System.out.print("Enter second dimension: ");
+        dimension2 = sc.nextDouble();
+        sc.close();
+    }
+}
+
+class Rectangle extends Polygon {
+    double calculateArea() {
+        return dimension1 * dimension2;
+    }
+}
+
+class Triangle extends Polygon {
+    double calculateArea() {
+        return 0.5 * dimension1 * dimension2;
+    }
+}
+
+public class MultilevelInheritance {
+    public static void main(String[] args) {
+        Rectangle rect = new Rectangle();
+        System.out.println("Rectangle:");
+        rect.ReadDimension();
+        System.out.println("Area: " + rect.calculateArea());
+
+        Triangle tri = new Triangle();
+        System.out.println("\nTriangle:");
+        tri.ReadDimension();
+        System.out.println("Area: " + tri.calculateArea());
+    }
+}
