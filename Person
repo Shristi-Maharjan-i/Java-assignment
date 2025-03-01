@@ -1,0 +1,33 @@
+class Person {
+    protected String name;
+    protected int age;
+
+    void readPersonData(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void displayPersonData() {
+        System.out.println("Name: " + name + "\nAge: " + age);
+    }
+}
+
+class Employee extends Person {
+    private int empID;
+
+    void readEmployeeData(String name, int age, int empID) {
+        readPersonData(name, age);
+        this.empID = empID;
+    }
+
+    void displayEmployeeData() {
+        displayPersonData();
+        System.out.println("Employee ID: " + empID);
+    }
+
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+        emp.readEmployeeData("John Doe", 30, 101);
+        emp.displayEmployeeData();
+    }
+}
