@@ -1,0 +1,23 @@
+interface Engine {
+    void start();
+}
+
+interface Wheels {
+    void roll();
+}
+
+class Car implements Engine, Wheels {
+    public void start() {
+        System.out.println("Car engine starting...");
+    }
+
+    public void roll() {
+        System.out.println("Car wheels rolling...");
+    }
+
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        myCar.start();
+        myCar.roll();
+    }
+}
